@@ -1,8 +1,10 @@
 from fastapi import FastAPI
+from model import postschema
 app= FastAPI()
 
-all_posts={{"id":"1","title": "My first post","desc": "This is my first post"},{ "id":"2","title": "My second post","desc": "This is my second post"}}
-
+all_posts=[{"id":1,"title": "My first post","desc": "This is my first post"},{ "id":2,"title": "My second post","desc": "This is my second post"}]
+# def frozendict(d: dict):
+#     return frozenset(d.keys()), frozenset(d.values())
 @app.get("/")
 def index():
     return {"name": "Alan"}
@@ -19,10 +21,14 @@ def get_students(student_id: int):
 def all():
     return {"data": all_posts}
 
-@app.get("/posts/{id}")
-def blog(id: int):
+@app.get("/posts/{post_id}")
+def blog(post_id : int):
     for i in all_posts:
-        if i["id"]==id:
+        if i["id"]==post_id:
             return {"data":i}
+
+@app.post("/posts/create")
+def create(post: postschema):
+    return {"data": post} 
 
 
