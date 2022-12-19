@@ -3,7 +3,7 @@ import os
 from fastapi import FastAPI
 from model import postschema
 from pymongo import MongoClient
-CONNECTION_STRING = "mongodb+srv://a-lan:tS4AlsVZhv04Qc8s@cluster0.dxq4csf.mongodb.net/?retryWrites=true&w=majority"
+CONNECTION_STRING = ""
 myclient = MongoClient(CONNECTION_STRING)
 mydb = myclient["Erudite"]
 
